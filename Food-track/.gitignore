@@ -5,6 +5,8 @@
 [Bb]uilds/
 [Ll]ogs/
 [Mm]emoryCaptures/
+UserSettings/
+.vs/
 *.csproj
 *.unityproj
 *.sln
@@ -19,3 +21,9 @@
 *.mdb
 *.opendb
 *.VC.db
+*.DS_Store
+.DS_Store
+*.apk
+*.zip
+*.rar
+*.7z
