@@ -7,15 +7,15 @@ public class PlatoEntregaUI : MonoBehaviour
         var receta = OrderManager.Instance.currentRecipe;
         bool esCorrecto = PlatoActual.Instance.EsPedidoCorrecto(receta);
 
-        if (esCorrecto)
+       if (esCorrecto)
         {
-            Debug.Log("✅ Pedido correcto entregado");
+            UIFeedback.Instance.MostrarFeedback("✅ Pedido correcto", Color.green, 10);
             OrderManager.Instance.GenerateNewOrder();
             PlatoActual.Instance.VaciarPlato();
         }
         else
         {
-            Debug.Log("❌ Pedido incorrecto entregado");
+            UIFeedback.Instance.MostrarFeedback("❌ Pedido incorrecto", Color.red, 0);
         }
     }
 }
