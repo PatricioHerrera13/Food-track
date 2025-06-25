@@ -16,6 +16,6 @@ MonoBehaviour:
   requiredIngredients:
   - {fileID: 11400000, guid: 168d3997cd1eb1343916b512fa7e4148, type: 2}
   - {fileID: 11400000, guid: 7dc90ca3993ea1b469cfe5129f4a6953, type: 2}
-  maxValue: 0
+  maxValue: 100
   allowedTolerance: 0
   image: {fileID: 0}

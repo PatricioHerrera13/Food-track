@@ -35,4 +35,7 @@ public class UIFeedback : MonoBehaviour
     {
         feedbackText.gameObject.SetActive(false);
     }
+
+    // 🔓 Acceso público al puntaje
+    public int Score => score;
 }

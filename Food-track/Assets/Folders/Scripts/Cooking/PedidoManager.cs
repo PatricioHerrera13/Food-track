@@ -17,6 +17,10 @@ public class PedidoManager : MonoBehaviour
     public float tiempoEntrePedidos = 5f;
     private float tiempoActual = 0f;
 
+    [Header("Tiempo total del juego")]
+    public float duracionDelJuego = 90f; // o el tiempo que quieras
+
+
     private List<PedidoVisual> pedidosActivos = new List<PedidoVisual>();
     private bool juegoActivo = true;
 
@@ -34,6 +38,16 @@ public class PedidoManager : MonoBehaviour
     {
         if (!juegoActivo) return;
 
+        // 🔴 Conteo regresivo global
+        duracionDelJuego -= Time.deltaTime;
+
+        if (duracionDelJuego <= 0f)
+        {
+            FinalizarJuego();
+            return;
+        }
+
+        // 🟢 Spawneo de pedidos
         tiempoActual -= Time.deltaTime;
 
         if (tiempoActual <= 0f && pedidosActivos.Count < posicionesPedidos.Length)
