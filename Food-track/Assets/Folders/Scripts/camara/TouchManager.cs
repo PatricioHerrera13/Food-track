@@ -3,14 +3,13 @@ using UnityEngine;
 public class TouchManager : MonoBehaviour
 {
     public LayerMask itemLayer;
-    public float maxTouchMovement = 10f; // Máxima distancia para que se considere toque válido
+    public float maxTouchMovement = 10f; // Máxima distancia en pantalla para considerar "toque"
 
     private Vector2 touchStartPos;
 
     void Update()
     {
 #if UNITY_EDITOR
-        // Mouse (Editor o PC)
         if (Input.GetMouseButtonDown(0))
             touchStartPos = Input.mousePosition;
 
@@ -23,7 +22,6 @@ public class TouchManager : MonoBehaviour
             }
         }
 #else
-        // Móvil
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -48,7 +46,6 @@ public class TouchManager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(pantallaPos);
         if (Physics.Raycast(ray, out RaycastHit hit, 100f, itemLayer))
         {
-            // Interacción con ítems
             if (hit.collider.TryGetComponent<ItemInstance>(out var item))
             {
                 if (PlayerInventory.Instance.IsHoldingItem())
@@ -56,11 +53,9 @@ public class TouchManager : MonoBehaviour
                 else
                     PlayerInventory.Instance.PickUpItem(item);
             }
-
-            // Interacción con dispensers
             else if (hit.collider.TryGetComponent<DispenserTactil>(out var dispenser))
             {
-                dispenser.Dispensar(); // Método para generar el ítem
+                dispenser.Dispensar();
             }
         }
     }
