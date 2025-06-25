@@ -2,30 +2,23 @@ using UnityEngine;
 
 public class DispenserTactil : MonoBehaviour
 {
+    [Header("Prefabs")]
     public GameObject prefabItem;
-    public LayerMask detectionLayer;
 
-    void Update()
-    {
-#if UNITY_EDITOR
-        if (Input.GetMouseButtonDown(0))
-            RevisarInput(Input.mousePosition);
-#else
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-            RevisarInput(Input.GetTouch(0).position);
-#endif
-    }
+    [Header("Opciones")]
+    public Vector3 offset = new Vector3(0, 0.5f, 0);
 
-    void RevisarInput(Vector2 pantallaPos)
+    // Este método será llamado desde TouchManager
+    public void Dispensar()
     {
-        Ray ray = Camera.main.ScreenPointToRay(pantallaPos);
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f, detectionLayer))
+        if (prefabItem == null)
         {
-            if (hit.collider.gameObject == gameObject)
-            {
-                Vector3 pos = transform.position + Vector3.up * 0.5f;
-                Instantiate(prefabItem, pos, Quaternion.identity);
-            }
+            Debug.LogError("❌ No hay prefab asignado al Dispenser.");
+            return;
         }
+
+        Vector3 spawnPosition = transform.position + offset;
+        Instantiate(prefabItem, spawnPosition, Quaternion.identity);
+        Debug.Log("✅ Item generado desde Dispenser");
     }
 }

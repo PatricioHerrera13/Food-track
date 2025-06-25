@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2574723951920448630}
   - component: {fileID: 4151566243882172102}
   - component: {fileID: 4996125444239407734}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dispenser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb6680db391157d488a9e6f3aa7944c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemToDispensePrefab: {fileID: 0}
-  cooldownTime: 0.1
-  audioSource: {fileID: 0}
-  sfxDispenseItem: {fileID: 0}
+  prefabItem: {fileID: 0}
+  offset: {x: 0, y: 0.5, z: 0}
