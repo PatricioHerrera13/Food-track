@@ -168,3 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiempoParaCocinar: 5
   tiempoParaQuemar: 8
+  colorCrudo: {r: 1, g: 1, b: 1, a: 1}
+  colorCocido: {r: 0.6, g: 0.3, b: 0.1, a: 1}
+  colorQuemado: {r: 0, g: 0, b: 0, a: 1}
+  targetRenderer: {fileID: 0}

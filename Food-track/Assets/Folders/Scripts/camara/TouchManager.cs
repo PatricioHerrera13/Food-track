@@ -3,60 +3,80 @@ using UnityEngine;
 public class TouchManager : MonoBehaviour
 {
     public LayerMask itemLayer;
-    public float maxTouchMovement = 10f; // Máxima distancia en pantalla para considerar "toque"
+    public float maxTouchMovement = 10f;
 
-    private Vector2 touchStartPos;
+    private Vector2 touchStart;
+    private bool arrastrando = false;
 
     void Update()
     {
 #if UNITY_EDITOR
         if (Input.GetMouseButtonDown(0))
-            touchStartPos = Input.mousePosition;
+        {
+            touchStart = Input.mousePosition;
+            ProcesarInicio(Input.mousePosition);
+        }
+
+        if (Input.GetMouseButton(0) && PlayerInventory.Instance.IsHoldingItem())
+            MoverMano(Input.mousePosition);
 
         if (Input.GetMouseButtonUp(0))
         {
-            float moved = Vector2.Distance(touchStartPos, Input.mousePosition);
-            if (moved < maxTouchMovement)
+            if (arrastrando)
             {
-                ProcesarToque(Input.mousePosition);
+                PlayerInventory.Instance.DropItem();
+                arrastrando = false;
             }
         }
 #else
-        if (Input.touchCount > 0)
+        if (Input.touchCount == 0) return;
+
+        Touch touch = Input.GetTouch(0);
+
+        if (touch.phase == TouchPhase.Began)
         {
-            Touch touch = Input.GetTouch(0);
+            touchStart = touch.position;
+            ProcesarInicio(touch.position);
+        }
 
-            if (touch.phase == TouchPhase.Began)
-                touchStartPos = touch.position;
+        if (touch.phase == TouchPhase.Moved && PlayerInventory.Instance.IsHoldingItem())
+            MoverMano(touch.position);
 
-            if (touch.phase == TouchPhase.Ended)
-            {
-                float moved = Vector2.Distance(touchStartPos, touch.position);
-                if (moved < maxTouchMovement)
-                {
-                    ProcesarToque(touch.position);
-                }
-            }
+        if (touch.phase == TouchPhase.Ended && arrastrando)
+        {
+            PlayerInventory.Instance.DropItem();
+            arrastrando = false;
         }
 #endif
     }
 
-    void ProcesarToque(Vector2 pantallaPos)
+    void ProcesarInicio(Vector2 screenPos)
     {
-        Ray ray = Camera.main.ScreenPointToRay(pantallaPos);
+        Ray ray = Camera.main.ScreenPointToRay(screenPos);
         if (Physics.Raycast(ray, out RaycastHit hit, 100f, itemLayer))
         {
-            if (hit.collider.TryGetComponent<ItemInstance>(out var item))
+            if (!PlayerInventory.Instance.IsHoldingItem())
             {
-                if (PlayerInventory.Instance.IsHoldingItem())
-                    PlayerInventory.Instance.DropItem();
-                else
+                if (hit.collider.TryGetComponent<ItemInstance>(out var item))
+                {
                     PlayerInventory.Instance.PickUpItem(item);
+                    arrastrando = true;
+                }
+                else if (hit.collider.TryGetComponent<DispenserTactil>(out var dispenser))
+                {
+                    bool entregado = dispenser.DispensarEnMano();
+                    arrastrando = entregado;
+                }
             }
-            else if (hit.collider.TryGetComponent<DispenserTactil>(out var dispenser))
-            {
-                dispenser.Dispensar();
-            }
+        }
+    }
+
+    void MoverMano(Vector2 screenPos)
+    {
+        Ray ray = Camera.main.ScreenPointToRay(screenPos);
+        if (Physics.Raycast(ray, out RaycastHit hit, 100f))
+        {
+            PlayerInventory.Instance.UpdateHandPosition(hit.point);
         }
     }
 }

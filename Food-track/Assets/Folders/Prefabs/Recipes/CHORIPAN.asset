@@ -19,3 +19,4 @@ MonoBehaviour:
   maxValue: 100
   allowedTolerance: 0
   image: {fileID: 0}
+  outputItem: {fileID: 11400000, guid: 9c02b30237c5e674c8803f45621ee4a5, type: 2}

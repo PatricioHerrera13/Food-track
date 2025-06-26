@@ -4,13 +4,13 @@ public class PlayerInventory : MonoBehaviour
 {
     public static PlayerInventory Instance;
 
-    public Transform handPoint; // Objeto "mano"
+    public Transform handPoint; // La "mano" invisible que arrastra ítems
     public ItemInstance itemInHand;
 
     [Header("Zona permitida de movimiento (cubo interactivo)")]
     public BoxCollider interactionVolume;
 
-    [Header("Layer donde el ítem puede caer (zonas físicas)")]
+    [Header("Layer donde el ítem puede caer (zonas válidas)")]
     public LayerMask groundLayer;
 
     private void Awake()
@@ -27,10 +27,11 @@ public class PlayerInventory : MonoBehaviour
         item.GetComponent<Rigidbody>().isKinematic = true;
         item.transform.SetParent(handPoint);
         item.transform.localPosition = Vector3.zero;
+
         itemInHand = item;
         item.isHeld = true;
 
-        Debug.Log("👋 Agarraste: " + item.itemData.itemName);
+        Debug.Log("🖐️ Agarraste: " + item.itemData.itemName);
     }
 
     public void DropItem()
@@ -40,7 +41,6 @@ public class PlayerInventory : MonoBehaviour
         RaycastHit hit;
         Vector3 dropPosition = handPoint.position;
 
-        // Si hay una superficie válida debajo, soltar el ítem ahí
         if (Physics.Raycast(dropPosition, Vector3.down, out hit, 2f, groundLayer))
         {
             dropPosition = hit.point + Vector3.up * 0.05f;
@@ -51,11 +51,16 @@ public class PlayerInventory : MonoBehaviour
         itemInHand.GetComponent<Rigidbody>().isKinematic = false;
         itemInHand.isHeld = false;
         itemInHand = null;
+
+        Debug.Log("✅ Ítem soltado");
     }
 
     public void UpdateHandPosition(Vector3 targetWorldPos)
     {
+        if (!IsHoldingItem()) return;
+
         Vector3 localPoint = interactionVolume.transform.InverseTransformPoint(targetWorldPos);
+
         Vector3 halfSize = interactionVolume.size * 0.5f;
         Vector3 center = interactionVolume.center;
 

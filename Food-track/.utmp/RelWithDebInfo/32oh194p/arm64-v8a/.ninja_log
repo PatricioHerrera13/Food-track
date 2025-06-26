@@ -1,12 +1,23 @@
 # ninja log v5
+7	10296	7723995657506331	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	3722f59b9064ed0b
 34	3471	7723995589515763	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	bef9f899b46a8594
+10	9849	7723995652692376	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	8dd617e625666a7f
 3509	5813	7723995613057983	C:/Users/patri/Desktop/food truck/Food-track/Food-track/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/32oh194p/obj/arm64-v8a/libswappywrapper.so	f0189f21103c358
 16	9074	7723995643298082	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	888ff8c27d784ddd
-10	9849	7723995652692376	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	8dd617e625666a7f
-4	9851	7723995652783514	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	97d5797b64452f2f
-22	9883	7723995652967001	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	f8f04b9dfb500941
 19	10136	7723995654432752	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	f735c6d66424a228
+4	9851	7723995652783514	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	97d5797b64452f2f
 0	10138	7723995654834516	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	d9e9cc53653149d0
+22	9883	7723995652967001	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	f8f04b9dfb500941
 12	10291	7723995657720875	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	4c0351cbf0615894
-7	10296	7723995657506331	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	3722f59b9064ed0b
 10296	12205	7723995676893544	C:/Users/patri/Desktop/food truck/Food-track/Food-track/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/32oh194p/obj/arm64-v8a/libgame.so	b9e1080f63c54502
+1062	3809	7726183593119458	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	bef9f899b46a8594
+3810	4457	7726183601292254	C:/Users/patri/Desktop/food truck/Food-track/Food-track/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/32oh194p/obj/arm64-v8a/libswappywrapper.so	f0189f21103c358
+955	5536	7726183611780052	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	97d5797b64452f2f
+1047	5538	7726183611729808	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	8dd617e625666a7f
+1053	5740	7726183612202235	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	888ff8c27d784ddd
+1042	5795	7726183614618371	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	d9e9cc53653149d0
+1055	5803	7726183613149603	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	f8f04b9dfb500941
+1059	6113	7726183617836267	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	f735c6d66424a228
+1045	6281	7726183619464241	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	3722f59b9064ed0b
+1050	6298	7726183619647957	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	4c0351cbf0615894
+6299	6714	7726183623761241	C:/Users/patri/Desktop/food truck/Food-track/Food-track/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/32oh194p/obj/arm64-v8a/libgame.so	b9e1080f63c54502

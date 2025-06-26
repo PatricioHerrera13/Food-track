@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChorizoCrudo
   m_EditorClassIdentifier: 
   itemName: ChorizoCrudo
-  prefab: {fileID: 5061745060021937059, guid: 9574f24e6ca18d84b903af1a6bf989fd, type: 3}
+  prefab: {fileID: 5061745060021937059, guid: e4e84ee5ca1c59141a5a85d0b56cdddd, type: 3}
   valor: 0
   isConsumable: 0
   cocido: {fileID: 11400000, guid: 168d3997cd1eb1343916b512fa7e4148, type: 2}

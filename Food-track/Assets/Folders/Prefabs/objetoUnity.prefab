@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   estadoActual: 0
-  rangoDeteccion: 4
+  rangoDeteccion: 3
   capaComida:
     serializedVersion: 2
     m_Bits: 256
